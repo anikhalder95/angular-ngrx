@@ -1,0 +1,59 @@
+<p>policy-details works!</p>
+<div class="Container">
+  <h2>Policy list</h2>
+
+  <div *ngIf="todoError?.message">
+    <div class="alert alert-danger" role="alert" id="ToDoError">
+      Some error occurred. Please try again
+    </div>
+  </div>
+
+  <div *ngFor="let todo of ToDoList" class="ToDoList">
+    <div class="row">
+      <div class="col-md-2">PolicyNumber:</div>
+      <div class="col-md-2 todoItem">{{ todo.policyNumber }}</div>
+      <div class="col-md-2">IsHealthPolicy:</div>
+      <div class="col-md-2 todoItem">{{ todo.isHealthPolicy }}</div>
+    </div>
+  </div>
+</div>
+
+<hr />
+
+<div class="container form-group" style="margin: 10px;">
+  <h3>Create New Policy</h3>
+  <form (ngSubmit)="createToDo()">
+    <div class="row">
+      <div class="form-group col-md-4">
+        <input
+          [(ngModel)]="policyNumber"
+          placeholder="Enter a Policy"
+          class="form-control"
+          name="policyNumber"
+          style="min-width: 150px;"
+        />
+      </div>
+
+      <div
+        class="col-md-2 form-check"
+        style="margin-top: 10px; margin-left: 30px;"
+      >
+        <input
+          type="checkbox"
+          class="form-check-input"
+          id="isHealthPolicy"
+          name="isHealthPolicy"
+          [(ngModel)]="isHealthPolicy"
+        />
+
+        <label for="isHealthPolicy" class="form-check-label">Is Health Policy?</label>
+      </div>
+
+      <div class="col-md-2">
+        <button type="submit" class="btn btn-primary" style="Width:70px;">
+          Add
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
